@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="row">
+		<h2>Followings</h2>
+	</div>
+	<% if @user.followings.empty? %>
+		<div class="row">
+			ユーザーはいません
+		</div>
+	<% end %>
+<% @user.followings.each do |user| %>
+	<div class="row">
+		<div class="col-xs-3">
+			<%= attachment_image_tag(@user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg") %>
+		</div>
+		<div class="col-xs-3">
+			<%= user.name %>
+		</div>
+		<div class="col-xs-3">
+			<%= link_to '詳細', user_path(user) %>
+		</div>
+	</div>
+<% end %>
+</div>
